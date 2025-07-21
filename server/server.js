@@ -14,4 +14,4 @@ sequelize.sync() //create new tables if still not exist
         console.log('✅ DB synced');
         app.listen(5000, () => console.log('🚀 Server running on port 5000'));
     })
-    .catch((error) => console.error('❌ DB error:'), error);
+    .catch((error) => console.log('❌ DB error:', error));
