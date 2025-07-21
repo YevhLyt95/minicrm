@@ -9,7 +9,7 @@ app.use(cors());
 app.use(express.json());
 
 app.use('/clients', clientsRouter); //new route
-sequelize.sync() //create new tables if still not exist
+sequelize.sync({ alter: true }) //create new tables if still not exist
     .then(() => {
         console.log('✅ DB synced');
         app.listen(5000, () => console.log('🚀 Server running on port 5000'));

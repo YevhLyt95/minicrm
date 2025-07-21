@@ -11,6 +11,10 @@ const Client = sequelize.define('Client', {
         type: DataTypes.STRING,
         validate: { isEmail: true }
     },
+    phone: {
+        type: DataTypes.STRING,
+        allowNull: false
+    },
     status: {
         type: DataTypes.STRING,
         toDefaultValue: 'new'

@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
 
-const AddClientForm = () => {
+const AddClientForm = ({ onClientAdded }) => {
     const [formData, setFormData] = useState({
         name: '',
         email: '',
-        phone: ''
+        phone: '',
+        status: ''
     });
     const [message, setMessage] = useState('');
     const handleChange = (e) => {
@@ -26,6 +27,7 @@ const AddClientForm = () => {
             const data = await response.json();
             setMessage(`✅ Client added: ${data.name}`);
             setFormData({ name: '', email: '', phone: '' });
+            if (onClientAdded) onClientAdded(); //list reloading
         } catch (err) {
             setMessage(`❌ ${err.message}`);
 
@@ -66,6 +68,16 @@ const AddClientForm = () => {
                         className="form-control"
                         name="phone"
                         value={formData.phone}
+                        onChange={handleChange}
+                    />
+                </div>
+                <div className="mb-3">
+                    <label className="form-label">Status</label>
+                    <input
+                        type="text"
+                        className="form-control"
+                        name="status"
+                        value={formData.status}
                         onChange={handleChange}
                     />
                 </div>
