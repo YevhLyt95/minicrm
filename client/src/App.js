@@ -16,7 +16,7 @@ function App() {
   return (
     <div>
       <AddClientForm onClientAdded={loadClients} />
-      <ClientsTable clients={clients} />
+      <ClientsTable clients={clients} onDelete={loadClients} />
     </div>
   );
 }
